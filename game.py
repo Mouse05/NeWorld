@@ -48,18 +48,27 @@ class character:
 print("\n\n *Yawn* You wake up in the morning, confused about where you are. Ah. You remember. You're on the PB&J 1600, humanity's first ship to the one of exoplanets with life detected on it! Now, you start to slowly orient yourselves to your surroundings...")
 
 name = input("What is your character's name? ")
-age = input("What is your character's age? ")
 sex = input("What are your character's pronouns? ")
+age = input("What is your character's age? ")
+value = False
+while value == False:
+    try:
+        age = int(age)
+        value = True
+    except:
+        print("Please enter a valid age: ")
+        age = input("What is your character's age? ")
+
+    
+
 knowledge = 0
 notes_list = []
 
 char = character(name, age, sex, knowledge)
 
 print("Is this what your character's information is supposed to display? ")
-print(char.name, char.age, char.sex)
-confirmation = input("Please enter yes or no: ")
-while confirmation != "yes" or confirmation != "Yes" or confirmation != "no" or confirmation != "No":
-    confirmation = input("Please enter a valid response: ")
+print("Name: " + char.name + " Age: " + str(char.age) + " Pronouns: " + char.sex)
+confirmation = input("Please enter 'no' if the information is incorrect. Otherwise, enter anything. ")
 if confirmation == "no" or confirmation == "No":
     while confirmation == "no" or confirmation == "No":
         name = input("What is your character's name? ")
@@ -68,6 +77,8 @@ if confirmation == "no" or confirmation == "No":
         print("Is this what your character's information is supposed to display? ")
         print(char.name, char.age, char.sex)
         confirmation = input("Please enter yes or no")
+else:
+    print("Perfect, let's continue!")
 
 planet = input("Please pick a planet from the following (Ishmorz, Smayup, Hularu): ")
 if planet != "Ishmorz" and planet != "Smayup" and planet != "Hularu":
@@ -81,7 +92,7 @@ if planet == "Ishmorz":
 
     print("1. Lack of pollution 2. Magic 3. Dust-cleaning ships")
 
-    input_a = str(input("Please enter a value: "))
+    input_a = input("Please enter a value: ")
 
     if input_a == "1":
         print("You are correct! After taks with the Ishmese king, you realize that they keep their water clean by preventing pollution.")
@@ -90,9 +101,10 @@ if planet == "Ishmorz":
     else:
         print("The correct answer is 1.")
 
-    print("\n\n You also notice that the oceanic creatures that the Ishmese keep are healthier. This is because of a lack of pollutants in the water. When pollutants are present, it can magnify up the foodchain, in a process called...")
+    print("\n You also notice that the oceanic creatures that the Ishmese keep are healthier. This is because of a lack of pollutants in the water. When pollutants are present, it can magnify up the foodchain, in a process called...")
 
-    input_b = input("1. Biomagnification, 2. Ecoterrorism, 3. Magic")
+    print("1. Biomagnification, 2. Ecoterrorism, 3. Magic")
+    input_b = input("Please enter a value: ")
     if input_b == "1":
         print("You are correct!")
         knowledge += 1
@@ -100,7 +112,7 @@ if planet == "Ishmorz":
     else:
         print("The correct answer is 1")
         
-    print("\n\n You have learned about the issues that the Ishmese were able to solve for with their amazing tecnology. However, they wish for you to provide a peice of knowledge from Earth, with a game. The head Ishmese laughs heartily. The sonar-gilled population loved games! So, you challenge them to a game of rock-paper-scissors, a simple game that can be taught anywhere!")
+    print("\n You have learned about the issues that the Ishmese were able to solve for with their amazing tecnology. However, they wish for you to provide a peice of knowledge from Earth, with a game. The head Ishmese laughs heartily. The sonar-gilled population loved games! So, you challenge them to a game of rock-paper-scissors, a simple game that can be taught anywhere!")
 
     input_c = input("Please pick rock, paper, or scissors.")
 
@@ -125,9 +137,10 @@ elif planet == "Smayup":
     else:
         print("The correct answer is 1")
             
-    print("\n\n You also notice that the planet is much cooler than on Earth. On Earth, _______ makes the excess carbon dioxice in the atmosphere heat the Earth up significantly")
+    print("\n You also notice that the planet is much cooler than on Earth. On Earth, _______ makes the excess carbon dioxice in the atmosphere heat the Earth up significantly")
 
-    input_b = input("1. Eri effect, 2. Greenhouse effect, 3. Carbon Cycle")
+    print("1. Eri effect, 2. Greenhouse effect, 3. Carbon Cycle")
+    input_b = input("Please enter a value: ")
     if input_b == "2":
         print("You are correct!")
         knowledge += 1
@@ -172,9 +185,10 @@ elif planet == "Hularu":
     else:
         print("The correct answer is 1.")
         
-    print("\n\n You also notice that the air is much fresher than that of Earth. On Earth, the lack of trees results in the loss of a...")
+    print("\n You also notice that the air is much fresher than that of Earth. On Earth, the lack of trees results in the loss of a...")
 
-    input_b = input("1. Carbon releaser, 2. Carbon cycle, 3. Carbon sink")
+    print("1. Carbon releaser, 2. Carbon cycle, 3. Carbon sink")
+    input_b = input("Please enter a value: ")
     if input_b == "3":
         print("You are correct!")
         knowledge += 1
@@ -182,7 +196,7 @@ elif planet == "Hularu":
     else:
         print("The correct answer is 3")
         
-    print("\n\n You have learned about the issues that the Hularians were able to solve for with their amazing technology. However, as an agreiculture based species, they want you to plant some trees!")
+    print("\n You have learned about the issues that the Hularians were able to solve for with their amazing technology. However, as an agreiculture based species, they want you to plant some trees!")
 
     input_c = str(input("What plant do you want to plant? 1. Wheat, 2. Corn, 3. Potatoes "))
     if input_c == "1":
